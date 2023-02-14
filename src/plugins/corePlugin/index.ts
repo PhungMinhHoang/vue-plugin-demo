@@ -1,18 +1,19 @@
-import config from "@/pluginConfig.js";
-
 export default {
   async install(Vue, options) {
-    const pluginList = config.plugins;
+    const modules = import.meta.glob(["../../**/plugin.json", "!./plugin.json"]);
 
-    for (const pluginName of pluginList) {
+    for (const path in modules) {
+      const pluginInfo: any = await modules[path]();
+      console.log(path, pluginInfo);
+
       try {
-        const importPlugin = await import(`../${pluginName}`);
+        const importPlugin = await import(`../${pluginInfo.id}`);
         const pluginModule = importPlugin.default;
 
         Vue.use(pluginModule, options);
-        console.log(`${pluginName} plugin is installed`);
+        console.log(`${pluginInfo.id} plugin is installed`);
       } catch (error) {
-        console.log(`${pluginName} plugin not found: ` + error);
+        console.log(`${pluginInfo.id} plugin not found: ` + error);
       }
     }
 
