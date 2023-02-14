@@ -1,5 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import { createI18n } from "vue-i18n";
+import messages from "./i18n";
 import corePlugin from "./plugins/corePlugin";
 
 import App from "./App.vue";
@@ -9,9 +11,18 @@ import "./assets/main.css";
 
 const app = createApp(App);
 const store = createPinia();
+const i18n = createI18n({
+  locale: "vi",
+  messages,
+});
 
-app.use(store);
 app.use(router);
+app.use(store);
+app.use(i18n);
+
+//Inject window
+Object.assign(app, { router, store, i18n });
+window.Vue = app;
 
 //This callback will be call after all plugins are installed
 const installPluginCallback = () => {
@@ -21,9 +32,4 @@ const installPluginCallback = () => {
 
   app.mount("#app");
 };
-app.use(corePlugin, { router, store, callback: installPluginCallback });
-
-//Inject window
-window.Vue = app;
-window.router = router;
-window.store = store;
+app.use(corePlugin, { router, store, i18n, callback: installPluginCallback });

@@ -1,9 +1,9 @@
 import routes from "./router.js";
 
 const testPlugin = {
-  install(Vue, options) {
-    extendRouter(options.router);
-    extendStore(options.store);
+  install(app, options) {
+    extendRouter(app.router);
+    extendStore(app.store);
   },
 };
 

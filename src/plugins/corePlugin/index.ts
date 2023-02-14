@@ -1,5 +1,5 @@
 export default {
-  async install(Vue, options) {
+  async install(app, options) {
     const modules = import.meta.glob(["../../**/plugin.json", "!./plugin.json"]);
 
     for (const path in modules) {
@@ -10,7 +10,7 @@ export default {
         const importPlugin = await import(`../${pluginInfo.id}`);
         const pluginModule = importPlugin.default;
 
-        Vue.use(pluginModule, options);
+        app.use(pluginModule, options);
         console.log(`${pluginInfo.id} plugin is installed`);
       } catch (error) {
         console.log(`${pluginInfo.id} plugin not found: ` + error);
