@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h1>{{ $t("message.hello") }}</h1>
+  <h1>{{ $t("mrw") }}</h1>
 </template>
 
 <style scoped></style>
