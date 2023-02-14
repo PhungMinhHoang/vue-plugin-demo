@@ -14,7 +14,7 @@ const changeUser = () => {
   <div>
     <h1>Welcome {{ username }} to TestPlugin</h1>
 
-    <button @click="changeUser">Change user</button>
+    <button @click="changeUser">Change user {{ $t("mrw") }}</button>
   </div>
 </template>
 
