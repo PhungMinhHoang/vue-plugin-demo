@@ -1,18 +1,22 @@
-import routes from "./router.js";
+//import routes from "./router.js";
+
+import type { App } from "vue";
 
 const testPlugin = {
-  install(app, options) {
-    extendRouter(app.router);
+  install(app: App, options) {
+    //extendRouter(app.router);
     extendStore(app.store);
+
+    app.config.globalProperties.$test = test;
   },
 };
 
-const extendRouter = (router) => {
-  routes.forEach((route) => {
-    console.log("Add route", route);
-    router.addRoute(route);
-  });
-};
+// const extendRouter = (router) => {
+//   routes.forEach((route) => {
+//     console.log("Add route", route);
+//     router.addRoute(route);
+//   });
+// };
 
 const extendStore = (store) => {
   const SecretPiniaPlugin = () => {
