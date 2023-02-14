@@ -16,10 +16,10 @@ for (const path in commonLocales) {
 }
 
 // get and merge key translate from plugins
-const modules = await import.meta.glob("../plugins/**/i18n/**");
+const pluginsLocales = await import.meta.glob("../plugins/**/i18n/**");
 
-for (const path in modules) {
-  content = await getContentFromPath(path, modules);
+for (const path in pluginsLocales) {
+  content = await getContentFromPath(path, pluginsLocales);
 
   const array = path.split("/");
   const pluginName = array[2];
