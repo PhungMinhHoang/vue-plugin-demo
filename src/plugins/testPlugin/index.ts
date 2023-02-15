@@ -1,13 +1,14 @@
 //import routes from "./router.js";
 
 import type { App } from "vue";
+import { useTestPlugin } from "./composables";
 
 const testPlugin = {
   install(app: App, options) {
     //extendRouter(app.router);
     extendStore(app.store);
 
-    app.config.globalProperties.$test = test;
+    app.config.globalProperties.$useTestPlugin = useTestPlugin;
   },
 };
 

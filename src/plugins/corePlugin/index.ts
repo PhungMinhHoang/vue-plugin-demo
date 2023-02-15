@@ -4,7 +4,6 @@ export default {
 
     for (const path in modules) {
       const pluginInfo: any = await modules[path]();
-      console.log(path, pluginInfo);
 
       try {
         const importPlugin = await import(`../${pluginInfo.id}`);
