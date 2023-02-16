@@ -25,6 +25,8 @@ app.use(i18n);
 Object.assign(app, { router, store, i18n });
 window.Vue = app;
 
-app.use(corePlugin, { router, store, i18n });
+app.use(corePlugin, { router, store, i18n, callback: installPluginCallback });
 
-app.mount("#app");
+function installPluginCallback() {
+  app.mount("#app");
+}

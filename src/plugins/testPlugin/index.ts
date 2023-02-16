@@ -7,17 +7,17 @@ import enLocaleMessage from "./i18n/en.js";
 const testPlugin = {
   name: "testPlugin",
   install(app: App, options) {
-    if (options.addRouter) {
+    if (options?.addRouter) {
       extendRouter(app.router);
     }
     extendStore(app.store);
 
     app.i18n.global.mergeLocaleMessage("vi", {
-      testPlugin: viLocaleMessage
+      testPlugin: viLocaleMessage,
     });
 
     app.i18n.global.mergeLocaleMessage("en", {
-      testPlugin: enLocaleMessage
+      testPlugin: enLocaleMessage,
     });
 
     app.config.globalProperties.$useTestPlugin = useTestPlugin;

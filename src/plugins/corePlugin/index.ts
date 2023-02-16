@@ -2,12 +2,16 @@ import pluginConfig from "@/pluginConfig";
 
 export default {
   async install(app, options) {
-    //autoInstallPlugin(app, options);
+    //await autoInstallPlugin(app);
     installPluginByConfig(app);
+
+    if (options?.callback && typeof options?.callback === "function") {
+      options.callback();
+    }
   },
 };
 
-async function autoInstallPlugin(app, options) {
+async function autoInstallPlugin(app) {
   const modules = import.meta.glob(["../../**/plugin.json", "!./plugin.json"]);
 
   for (const path in modules) {
@@ -17,7 +21,7 @@ async function autoInstallPlugin(app, options) {
       const importPlugin = await import(`../${pluginInfo.id}/index.ts`);
       const pluginModule = importPlugin.default;
 
-      app.use(pluginModule, options);
+      app.use(pluginModule, pluginInfo.options);
       console.log(`${pluginInfo.id} plugin is installed`);
     } catch (error) {
       console.log(`${pluginInfo.id} plugin not found: ` + error);
