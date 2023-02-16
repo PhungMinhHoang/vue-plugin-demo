@@ -24,12 +24,6 @@ app.use(i18n);
 Object.assign(app, { router, store, i18n });
 window.Vue = app;
 
-//This callback will be call after all plugins are installed
-const installPluginCallback = () => {
-  // Change the current location and overwrite dynamic route when page is reloaded
-  // https://router.vuejs.org/guide/advanced/dynamic-routing.html#adding-routes
-  router.replace(router.currentRoute.value.fullPath);
+app.use(corePlugin, { router, store, i18n });
 
-  app.mount("#app");
-};
-app.use(corePlugin, { router, store, i18n, callback: installPluginCallback });
+app.mount("#app");

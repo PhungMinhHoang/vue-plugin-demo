@@ -1,0 +1,10 @@
+{
+  "name": "testPlugin",
+  "version": "0.0.0",
+  "description": "testPlugin",
+  "main": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}

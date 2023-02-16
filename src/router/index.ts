@@ -36,4 +36,18 @@ const router = createRouter({
   ],
 });
 
+let pageReload = false;
+
+router.afterEach((to, from) => {
+  if (!pageReload) {
+    pageReload = true;
+
+    if (to.path !== "/") {
+      // Change the current location and overwrite dynamic route when page is reloaded
+      // https://router.vuejs.org/guide/advanced/dynamic-routing.html#adding-routes
+      router.replace(to.fullPath);
+    }
+  }
+});
+
 export default router;

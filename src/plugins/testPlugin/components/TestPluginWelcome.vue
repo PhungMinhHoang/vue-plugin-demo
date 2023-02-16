@@ -3,6 +3,8 @@ import { computed } from "vue";
 import { useSharedStore } from "@/stores/shared";
 import { useTestPlugin } from "../composables";
 import { useTestPluginStore } from "../store";
+import moment from "moment";
+console.log("moment", moment()._d);
 
 const store = useSharedStore();
 const username = computed(() => store.username);

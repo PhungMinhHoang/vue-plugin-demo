@@ -4,10 +4,6 @@ export default {
   async install(app, options) {
     //autoInstallPlugin(app, options);
     installPluginByConfig(app);
-
-    if (options.callback && typeof options.callback === "function") {
-      options.callback();
-    }
   },
 };
 
