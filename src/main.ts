@@ -1,7 +1,8 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { createI18n } from "vue-i18n";
-import messages from "./i18n";
+// @ts-ignore
+import { commonLocalesMessage } from "./i18n";
 import corePlugin from "./plugins/corePlugin";
 
 import App from "./App.vue";
@@ -13,7 +14,7 @@ const app = createApp(App);
 const store = createPinia();
 const i18n = createI18n({
   locale: "vi",
-  messages,
+  messages: commonLocalesMessage(),
 });
 
 app.use(router);
