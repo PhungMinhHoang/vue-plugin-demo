@@ -4,7 +4,9 @@ import routes from "./router.js";
 
 const testPlugin = {
   install(app: App, options) {
-    extendRouter(app.router);
+    if (options.addRouter) {
+      extendRouter(app.router);
+    }
     extendStore(app.store);
 
     app.config.globalProperties.$useTestPlugin = useTestPlugin;
