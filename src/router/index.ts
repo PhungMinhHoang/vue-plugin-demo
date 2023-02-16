@@ -1,13 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 
-let routes = [];
-
-const modules = import.meta.glob("../plugins/**/router.ts");
-for (const path in modules) {
-  const routeImport: any = await modules[path]();
-  routes.push(...routeImport.default);
-}
+// let routes = [];
+// const modules = import.meta.glob("../plugins/**/router.ts")
+// for (const path in modules) {
+//   const routeImport: any = await modules[path]();
+//   routes.push(...routeImport.default);
+// }
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,7 +32,7 @@ const router = createRouter({
         label: "Về chúng tôi",
       },
     },
-    ...routes,
+    //...routes,
   ],
 });
 

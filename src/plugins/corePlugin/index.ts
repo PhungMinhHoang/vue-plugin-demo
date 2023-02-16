@@ -6,7 +6,7 @@ export default {
       const pluginInfo: any = await modules[path]();
 
       try {
-        const importPlugin = await import(`../${pluginInfo.id}`);
+        const importPlugin = await import(`../${pluginInfo.id}/index.ts`);
         const pluginModule = importPlugin.default;
 
         app.use(pluginModule, options);

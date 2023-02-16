@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import { useSharedStore } from "@/stores/shared";
 import { useTestPlugin } from "../composables";
+import { useTestPluginStore } from "../store";
 
 const store = useSharedStore();
 const username = computed(() => store.username);
@@ -11,6 +12,8 @@ const changeUser = () => {
 };
 
 const { testApi } = useTestPlugin();
+
+const testPluginStore = useTestPluginStore();
 </script>
 
 <template>
